@@ -25,7 +25,9 @@ client.on("message", (msg) => {
         .setDescription(
           `\n找不到 **建議頻道** ,請聯絡 ${client.user} 擁有者來解決這個問題`
         );
-      msg.channel.send(msg.author, embed);
+      msg.channel.send(msg.author, embed).then((msg) => {
+      msg.delete({ timeout: 1000 * 4 })
+      })
       msg.delete({ timeout: 1000 * 4 }); //4s
       return;
     }
