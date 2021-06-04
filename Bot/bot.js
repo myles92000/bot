@@ -26,7 +26,7 @@ client.on("message", (msg) => {
           `\n找不到 **建議頻道** ,請聯絡 ${client.user} 擁有者來解決這個問題`
         );
       msg.channel.send(msg.author, embed);
-      msg.delete({ timeout: 1000 * 4 }) //4s
+      msg.delete({ timeout: 1000 * 4 }); //4s
       return;
     }
     let sug = args.join(" ");
@@ -35,7 +35,9 @@ client.on("message", (msg) => {
         .setColor("RED")
         .setTitle("錯誤 找不到建議信息❌")
         .setDescription("未知的指令用法\n" + "`" + "!sug (建議)" + "`");
-      msg.channel.send(msg.author, embed);
+      msg.channel.send(msg.author, embed).then((msg) => {
+        msg.delete({ timeout: 1000 * 10 });
+      });
       msg.delete({ timeout: 1000 * 4 }); //4s
       return;
     }
@@ -54,7 +56,7 @@ client.on("message", (msg) => {
       msg.delete({ timeout: 1000 * 30 }); //30s
     });
     msg.react("✅");
-    msg.delete({ timeout: 1000 * 30 }); //End 
+    msg.delete({ timeout: 1000 * 30 }); //End
   }
 });
 
