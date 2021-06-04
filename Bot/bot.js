@@ -56,8 +56,8 @@ client.on("message", (msg) => {
       msg.delete({ timeout: 1000 * 30 }); //30s
     });
     msg.react("✅");
-    msg.delete({ timeout: 1000 * 30 }); //End
+    msg.delete({ timeout: 1000 * 30 }); 
   }
 });
-
+//End 
 client.login(process.env.TOKEN);
