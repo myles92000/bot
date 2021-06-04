@@ -18,7 +18,7 @@ client.on("message", (msg) => {
 
   if (command === "sug") {
     let sugChannel = msg.guild.channels.cache.get(""); //建議頻道 ID
-    if (!sugChannel) {
+    if (!sugChannel) { //找不到建議頻道
       let embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("錯誤 找不到建議頻道❌")
@@ -30,7 +30,7 @@ client.on("message", (msg) => {
       return;
     }
     let sug = args.join(" ");
-    if (!sug.length) {
+    if (!sug.length) { //使用者沒有輸入建議
       let embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("錯誤 找不到建議信息❌")
