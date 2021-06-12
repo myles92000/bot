@@ -20,7 +20,8 @@ client.on("message", (msg) => {
 
   if (command === "sug") {
     let sugChannel = msg.guild.channels.cache.get(""); //頻道 ID
-    if (!sugChannel) { //找不到頻道
+    if (!sugChannel) {
+      //找不到頻道
       let embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("錯誤 找不到建議頻道❌")
@@ -28,13 +29,14 @@ client.on("message", (msg) => {
           `\n找不到 **建議頻道** ,請聯絡 ${client.user} 擁有者來解決這個問題`
         );
       msg.channel.send(msg.author, embed).then((msg) => {
-      msg.delete({ timeout: 1000 * 8 }) //8s
-      })
+        msg.delete({ timeout: 1000 * 8 }); //8s
+      });
       msg.delete({ timeout: 1000 * 4 }); //4s
       return;
     }
     let sug = args.join(" ");
-    if (!sug.length) { //使用者沒有輸入建議
+    if (!sug.length) {
+      //使用者沒有輸入建議
       let embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("錯誤 找不到建議信息❌")
@@ -47,7 +49,7 @@ client.on("message", (msg) => {
     }
     let sugEmbed = new Discord.MessageEmbed()
       .setColor("GREEN")
-      .setAuthor(msg.author.tag)
+      .setAuthor(msg.author.tag, msg.author.displayAvatarURL({ dynamic: true }))
       .setDescription(`**建議:**\n${sug}`)
       .setThumbnail(msg.author.displayAvatarURL({ dynamic: true }))
       .setFooter(msg.guild.name)
@@ -57,10 +59,10 @@ client.on("message", (msg) => {
       msg.react("❌");
     });
     msg.reply("已傳送建議").then((msg) => {
-      msg.delete({ timeout: 1000 * 15 }); //15s
+      msg.delete({ timeout: 1000 * 10 });
     });
     msg.react("✅");
-    msg.delete({ timeout: 1000 * 15 }); 
+    msg.delete({ timeout: 1000 * 7 });
     // let logChannel = msg.guild.channels.cache.find((ch) => ch.name === "log");
     //if (!logChannel) return;
     // logChannel.send(`New Suggest By ${msg.author}`)
