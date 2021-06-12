@@ -1,3 +1,5 @@
+//不想努力了#0001
+
 const Discord = require("discord.js");
 
 const client = new Discord.Client();
@@ -17,8 +19,8 @@ client.on("message", (msg) => {
   const command = args.shift().toLowerCase();
 
   if (command === "sug") {
-    let sugChannel = msg.guild.channels.cache.get(""); //建議頻道 ID
-    if (!sugChannel) { //找不到建議頻道
+    let sugChannel = msg.guild.channels.cache.get(""); //頻道 ID
+    if (!sugChannel) { //找不到頻道
       let embed = new Discord.MessageEmbed()
         .setColor("RED")
         .setTitle("錯誤 找不到建議頻道❌")
@@ -61,5 +63,5 @@ client.on("message", (msg) => {
     msg.delete({ timeout: 1000 * 15 }); 
   }
 });
-//End 
+
 client.login(process.env.TOKEN);
