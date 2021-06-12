@@ -61,6 +61,9 @@ client.on("message", (msg) => {
     });
     msg.react("✅");
     msg.delete({ timeout: 1000 * 15 }); 
+    // let logChannel = msg.guild.channels.cache.find((ch) => ch.name === "log");
+    //if (!logChannel) return;
+    // logChannel.send(`New Suggest By ${msg.author}`)
   }
 });
 
