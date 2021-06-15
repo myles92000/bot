@@ -10,6 +10,7 @@ const prefix = process.env.PREFIX;
 
 client.on("ready", () => {
   console.log(`${client.user.tag} Online!`);
+  client.user.setActivity("Your Suggest!", { type: "LISTENING" });
 });
 
 client.on("message", (msg) => {
